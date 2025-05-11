@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap'); /* 引入手写体和衬线体 */
+
+body {
+    font-family: 'Noto Serif SC', serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fde4f2, #f8c3da);
+    /* 更柔和的粉色渐变 */
+    color: #333;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    perspective: 1000px;
+    /* 为3D效果准备 */
+}
+
+/* 惊喜礼盒样式 */
+#surprise-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    /* 覆盖整个屏幕 */
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.3);
+    /* 半透明遮罩 */
+    z-index: 1000;
+    /* 最高层级 */
+    cursor: pointer;
+}
+
+#surprise-box {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: pulseBox 2s infinite ease-in-out;
+}
+
+.box-lid {
+    width: 210px;
+    /* 比盒子稍大 */
+    height: 210px;
+    background-color: #ff80ab;
+    /* 亮粉色 */
+    border: 2px solid #c2185b;
+    position: absolute;
+    top: -30px;
+    /* 盖子初始位置 */
+    left: -5px;
+    border-radius: 10px 10px 0 0;
+    transform-origin: bottom center;
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    /* 回弹效果 */
+    z-index: 2;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+}
+
+#surprise-box.opened .box-lid {
+    transform: translateY(-120%) rotateX(-120deg);
+    /* 盖子打开动画 */
+}
+
+.box-body {
+    width: 200px;
+    height: 150px;
+    background-color: #fce4ec;
+    /* 淡粉色 */
+    border: 2px solid #f48fb1;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Ma Shan Zheng', cursive;
+    /* 手写体 */
+    font-size: 1.5em;
+    color: #c2185b;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+@keyframes pulseBox {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* 主内容容器 */
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    width: 90%;
+    position: relative;
+    animation: fadeInScaleUp 1s ease-out forwards;
+    opacity: 0;
+    /* 初始不可见 */
+}
+
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+header {
+    margin-bottom: 30px;
+    border-bottom: 2px dashed #e91e63;
+    padding-bottom: 20px;
+}
+
+header h1, header h2 {
+    font-family: 'Ma Shan Zheng', cursive;
+    /* 手写体 */
+    color: #c2185b;
+    margin: 5px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+header h1 {
+    font-size: 3.5em;
+}
+header h2 {
+    font-size: 2.5em;
+    color: #e91e63;
+}
+
+.message-container {
+    margin-bottom: 30px;
+}
+
+.interactive-message {
+    background-color: #fff0f5;
+    /* 淡雅背景 */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    line-height: 1.7;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border-left: 5px solid #f48fb1;
+    opacity: 0.7;
+    /* 初始半透明，点击后变清晰 */
+    transform: translateX(-20px);
+    /* 初始左移一点 */
+}
+
+.interactive-message.revealed {
+    background-color: #ffe4e1;
+    opacity: 1;
+    transform: translateX(0);
+    font-weight: bold;
+    color: #ad1457;
+}
+
+.interactive-message:hover {
+    background-color: #f8bbd0;
+    transform: translateX(0) scale(1.02);
+}
+
+.signature {
+    font-style: italic;
+    margin-top: 30px;
+    text-align: right;
+    color: #c2185b;
+    font-size: 1.3em;
+    font-family: 'Ma Shan Zheng', cursive;
+}
+
+.image-gallery-wrapper {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff9fb;
+    border-radius: 15px;
+}
+
+.image-gallery-wrapper h3 {
+    color: #c2185b;
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-image:hover {
+    transform: scale(1.08) rotate(3deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #f8bbd0;
+}
+
+footer p#final-wish {
+    font-size: 1.4em;
+    color: #c2185b;
+    font-weight: bold;
+    font-family: 'Ma Shan Zheng', cursive;
+}
+
+#easter-egg-trigger {
+    display: inline-block;
+    font-size: 2em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.3s;
+}
+#easter-egg-trigger:hover {
+    transform: scale(1.3) rotate(360deg);
+}
+
+.hidden-message {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fff0f5;
+    border-radius: 8px;
+    color: #e91e63;
+    font-style: italic;
+}
+
+/* 图片模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    /* 比礼盒高，比主内容高 */
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80vh;
+    animation: zoomModal 0.5s ease;
+}
+
+@keyframes zoomModal {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 50px;
+    /* Reserve space */
+    font-size: 1.2em;
+}
+
+
+/* 粒子/花瓣背景 */
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* 不阻挡鼠标事件 */
+    z-index: -1;
+    /* 在内容之后 */
+}
+
+/* 响应式调整 */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2.8em;
+    }
+    header h2 {
+        font-size: 2em;
+    }
+    .interactive-message {
+        font-size: 1.1em;
+    }
+    #surprise-box {
+        width: 150px;
+        height: 150px;
+    }
+    .box-lid {
+        width: 160px;
+        height: 160px;
+        top: -25px;
+    }
+    .box-body {
+        width: 150px;
+        height: 110px;
+        font-size: 1.2em;
+    }
+    .image-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}

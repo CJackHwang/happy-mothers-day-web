@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给最爱的妈妈一个大大的惊喜！</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="surprise-box-container">
+<div id="surprise-box">
+<div class="box-lid"></div>
+<div class="box-body">
+<span class="tap-to-open">点击打开惊喜！</span>
+</div>
+</div>
+</div>
+
+<div class="container" id="main-container" style="display: none;">
+<header>
+<h1 id="mom-greeting"></h1> <h2 id="festival-greeting"></h2> </header>
+
+<section class="main-content">
+<div class="message-container">
+<p class="interactive-message" data-message="感谢您，妈妈，为我付出的一切，您的爱是我心中最温暖的阳光。">点我查看第一句祝福 ❤️</p>
+<p class="interactive-message" data-message="您的每一次鼓励，都是我前进的动力，您的每一个拥抱，都能治愈所有疲惫。">再点我看看~ ✨</p>
+<p class="interactive-message" data-message="愿时光温柔待您，愿您永远年轻、健康、快乐、笑容灿烂如花！">还有一句！💐</p>
+<p class="signature">永远爱你的杰杰</p>
+</div>
+
+<div class="image-gallery-wrapper">
+</div>
+</section>
+
+<footer>
+<p id="final-wish">妈妈，愿您每天都充满阳光！</p>
+<div id="easter-egg-trigger">🌸</div>
+<p id="easter-egg-message" class="hidden-message">偷偷告诉你：你是世界上最棒的妈妈！😉</p>
+</footer>
+
+<canvas id="particle-canvas"></canvas>
+</div>
+
+<div id="image-modal" class="modal">
+<span class="close-modal">&times;</span>
+<img class="modal-content" id="modal-image">
+<div id="caption"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
